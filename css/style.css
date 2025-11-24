@@ -1,0 +1,252 @@
+:root {
+    --color-primary: #007aff;
+    --color-win: #34c759;
+    --color-loss: #ff3b30;
+    --color-draw: #ffcc00;
+    --color-background: #f2f2f7;
+    --color-card: #ffffff;
+    --color-text-dark: #1c1c1e;
+    --color-text-medium: #8e8e93;
+
+    --spacing-default: 16px;
+    --border-radius-default: 12px;
+    --box-shadow-default: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+    --font-family-system: 'Noto Sans JP', "Helvetica Neue", sans-serif;
+    --font-size-body: 1em;
+    --button-padding-y: 10px;
+    --button-padding-x: 15px;
+}
+
+body {
+    font-family: var(--font-family-system);
+    text-align: center;
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    padding-top: var(--spacing-default);
+}
+
+header {
+    color: var(--color-text-dark);
+    padding: 15px 0;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+main {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: var(--color-card);
+    border-radius: var(--border-radius-default);
+    padding: 15px;
+    margin-bottom: var(--spacing-default);
+    box-shadow: var(--box-shadow-default);
+}
+
+h2 {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--color-text-medium);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#score_board p {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+
+#total_plays_area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+#total_plays_area p {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 500;
+
+}
+
+#rest_all_btn {
+    background-color: var(--color-loss);
+    color: white;
+    border: none;
+    /* padding: var(--button-padding-x); */
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: backgronud-clor 0.2s, transform 0.1s;
+}
+
+#reset_all_btn:hover {
+    background-color: #e6392f;
+    color: white;
+
+
+}
+
+#reset_all_btn:active {
+    transform: scale(0.98);
+
+}
+
+#reset_all_btn:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 12px;
+}
+
+#custom_alert {
+    /* 画面中央に固定表示 */
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    /* 自身を半分戻して、正確な中央に配置 */
+    transform: translate(-50%, -50%);
+
+    background-color: #28a745;
+    /* 緑系の背景 */
+    color: white;
+    padding: 220px 140px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    /* 他の要素より手前に表示 */
+    font-size: 1.2rem;
+
+    /* 初期状態：非表示 */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s, visibility 0.1s;
+}
+
+/* 表示状態 */
+#custom_alert.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* じゃんけんボタンのスタイル */
+#janken_hands {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+#janken_hands li {
+    flex: 1;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 15px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.1s ease-out, background-color 0.1s;
+    font-size: 1.2em;
+    font-weight: 600;
+    user-select: none;
+    /* テキスト選択防止 */
+    line-height: 1;
+}
+
+#janken_hands li:active {
+    transform: scale(0.98);
+    background-color: #005ce6;
+}
+
+.result_area {
+    font-size: 1.1em;
+    font-weight: 400;
+    padding: 15px;
+}
+
+#judgment {
+    font-size: 2.5em;
+    margin-top: 15px;
+    font-weight: 700;
+    color: #1c1c1e;
+    min-height: 1.2em;
+}
+
+.win {
+    color: var(--color-win);
+}
+
+.loss {
+    color: var(--color-loss);
+}
+
+.draw {
+    color: var(--color-draw);
+}
+
+.result_area>div {
+    padding: 5px 0;
+}
+
+/* 履歴エリア */
+#history_area {
+    text-align: left;
+}
+
+#game_history {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#game_history li {
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e5ea;
+    font-size: 0.95em;
+    display: flex;
+    justify-content: space-between;
+}
+
+#game_history li:last-child {
+    border-bottom: none;
+}
+
+#game_history li span {
+    font-weight: 600;
+}
+
+.history-result-badge {
+    font-size: 0.8em;
+    padding: 3px 6px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 400;
+}
+
+.history-result-badge.win {
+    background-color: var(--color-win);
+}
+
+.history-result-badge.loss {
+    background-color: var(--color-loss);
+}
+
+.history-result-badge.draw {
+    background-color: var(--color-draw);
+    color: #1c1c1e;
+}
+
+/* キーボード押下時の視覚フィードバック */
+.pressed {
+    background-color: #5ac8fa !important;
+    transform: scale(0.95);
+}
